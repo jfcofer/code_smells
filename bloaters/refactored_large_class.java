@@ -1,12 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager {
-
+class UserService {
     private List<User> users = new ArrayList<>();
-    private List<Role> roles = new ArrayList<>();
 
-    // User Management Methods
     public void addUser(User user) {
         users.add(user);
     }
@@ -27,8 +24,11 @@ public class UserManager {
     public List<User> getAllUsers() {
         return new ArrayList<>(users);
     }
+}
 
-    // Role Management Methods
+class RoleService {
+    private List<Role> roles = new ArrayList<>();
+
     public void addRole(Role role) {
         roles.add(role);
     }
@@ -49,10 +49,17 @@ public class UserManager {
     public List<Role> getAllRoles() {
         return new ArrayList<>(roles);
     }
+}
 
-    // Authentication Methods
+class AuthenticationService {
+    private UserService userService;
+
+    public AuthenticationService(UserService userService) {
+        this.userService = userService;
+    }
+
     public boolean authenticate(String username, String password) {
-        User user = findUserByUsername(username);
+        User user = userService.findUserByUsername(username);
         if (user != null) {
             return user.getPassword().equals(password);
         }
@@ -62,8 +69,9 @@ public class UserManager {
     public void changePassword(User user, String newPassword) {
         user.setPassword(newPassword);
     }
+}
 
-    // Permission Management Methods
+class PermissionService {
     public void assignRoleToUser(User user, Role role) {
         user.addRole(role);
     }
@@ -82,7 +90,7 @@ public class UserManager {
     }
 }
 
-// Supporting Classes for Users and Roles
+
 class User {
     private String username;
     private String password;
