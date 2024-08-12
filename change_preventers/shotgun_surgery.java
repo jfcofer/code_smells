@@ -3,6 +3,19 @@ import java.util.List;
 
 class shotgun_surgery{
 
+    /*
+    Explicación del Problema de "Shotgun Surgery"
+    En el diseño original, añadir nuevos tipos de usuarios, roles o mecanismos de impresión 
+    implicaba modificaciones extensas en varias clases. Por ejemplo, si quisiéramos agregar
+    un nuevo tipo de usuario o rol, tendríamos que cambiar las clases de usuario y rol 
+    existentes y posiblemente actualizar la funcionalidad de impresión esparcida por el código.
+    Este enfoque fragmentado se conoce como "shotgun surgery" (cirugía con escopeta), 
+    donde un solo cambio requiere actualizaciones en numerosos lugares, aumentando el riesgo
+    de errores y haciendo que el sistema sea más difícil de mantener. Cada nueva funcionalidad
+    o ajuste requiere consideraciones cuidadosas y modificaciones en múltiples áreas, lo que 
+    lleva a un código base frágil y complejo.
+     */
+
     // User class
     class User {
         private String name;
